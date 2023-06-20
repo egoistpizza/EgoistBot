@@ -78,7 +78,7 @@ Here are a few examples:
 
 Here are the most basic EgoistBot commands and functions:
 
-NOTE: The following functions are now compatible with slash commands! You can also experience it by participating in the closed BETA program.
+NOTE: The following functions are now compatible with **"/" commands**! You can also experience it by participating in the **closed BETA** program.
 
 ```
 # PREFIX   ->   $
