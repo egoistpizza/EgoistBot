@@ -64,7 +64,7 @@ EgoistBot is a project still in development. To participate in the **closed BETA
 **Website:** https://egoistpizza.github.io/                               
 **E-Mail:** yusufozcetin@proton.me                                   
 **Telegram:** https://t.me/egoistpizza                               
-**Discord:** MjØlniR#4449
+**Discord:** egoistpizza
 
 ## Usage
 
