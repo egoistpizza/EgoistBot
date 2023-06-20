@@ -37,7 +37,7 @@ depressiveWords = ["üzgün","kızgın","ağlamaklı","yalnız","çaresiz","depr
 # We are starting Discord events.
 
 intents = discord.Intents.default()
-client = discord.Client(intents)
+client = discord.Client(intents=intents)
 
 # We get Ege Fitness quotes from a website using web scraping. <https://gymsozluk.com/blog/ege-fitness-sozleri/>
 
