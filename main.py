@@ -44,7 +44,7 @@ url = "https://gymsozluk.com/blog/ege-fitness-sozleri/"
 
 html = requests.get(url).content
 soup = BeautifulSoup(html,"html.parser")
-egeFitnessQuotes = soup.find("div", {"class":"geoit_entry-content"}).find_all("p")
+egeFitnessQuotes = soup.find().find_all("p")
 
 # We pull inspirational quotes using the ZenQuotes API. <https://zenquotes.io/>
 
