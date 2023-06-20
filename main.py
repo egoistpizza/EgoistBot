@@ -122,6 +122,50 @@ fightClubQuotes = [
     "Marla! Beni garip bir dönemimde tanıdın."
 ]
 
+# Retrieve and send a random Mustafa Kemal Atatürk quote from the Atatürk Sözleri API. (SlashCommand) (Temporarily Inactive)
+
+
+@tree.command(name="mka",
+              description="Mustafa Kemal Atatürk alıntısı",
+              guild=discord.Object(os.environ['TEST_GUILD_ID']))
+async def mka(interaction):
+    quote = getMkaQuote()
+    await interaction.response.send_message(quote)
+
+
+# Retrieve and send a quote from Ege Fitness obtained through web scraping.
+
+
+@tree.command(name="egefitness",
+              description="Ege Fitness alıntısı",
+              guild=discord.Object(os.environ['TEST_GUILD_ID']))
+async def egefitness(interaction):
+    await interaction.response.send_message(
+        (str(random.choice(egeFitnessQuotes)).replace("<p>", "").replace(
+            "</p>", "").replace("<br/>", "")))
+
+
+# Retrieve and send random inspirational quotes from ZenQuotes. (SlashCommand)
+
+
+@tree.command(name="inspiration",
+              description="A random inspirational quote",
+              guild=discord.Object(os.environ['TEST_GUILD_ID']))
+async def inspiration(interaction):
+    quote = getQuote()
+    await interaction.response.send_message(quote)
+
+
+# Send one of the stored Fight Club quotes when requested. (SlashCommand)
+
+
+@tree.command(name="tylerdurden",
+              description="Tyler Durden (Fight Club) alıntısı",
+              guild=discord.Object(os.environ['TEST_GUILD_ID']))
+async def tylerdurden(interaction):
+    await interaction.response.send_message(random.choice(fightClubQuotes))
+
+
 # Notify when the bot is successfully logged into Discord.
 
 
@@ -131,10 +175,13 @@ async def on_ready():
     print("Ready!")
 
 
+# Detect in-line commands and respond accordingly.
+
+
 @client.event
 async def on_message(message):
 
-    # Exclude the bot's own messages from moderation.
+    # Exclude the bot's own messages from observation.
 
     if message.author == client.user:
         return
