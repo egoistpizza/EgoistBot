@@ -77,6 +77,7 @@ Here are a few examples:
 ![Screen Shot](https://cdn.discordapp.com/attachments/982678664758054944/991469836255375390/unknown.png)
 
 Here are the most basic EgoistBot commands and functions:
+NOTE: The following functions are now compatible with slash commands! You can also experience it by participating in the closed beta program.
 
 ```
 # PREFIX   ->   $
