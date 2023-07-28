@@ -56,13 +56,18 @@ async def getping(interaction):
         f"Pong! In {round(client.latency * 1000)}ms")
 
 
-# Scrape Ege Fitness quotes from a website. <https://gymsozluk.com/blog/ege-fitness-sozleri/>
+# Scrape Ege Fitness quotes from a website. <Source: https://gymsozluk.com/blog/ege-fitness-sozleri/>
 
 url = "https://gymsozluk.com/blog/ege-fitness-sozleri/"
 
 html = requests.get(url).content
 soup = BeautifulSoup(html, "html.parser")
 egeFitnessQuotes = soup.find().find_all("p")
+
+# Retrieve quotes from Mustafa Kemal Atatürk from extra files. <Source: https://tr.wikiquote.org/wiki/Mustafa_Kemal_Atat%C3%BCrk>
+
+with open("extra/mkaQuotes.txt") as file:
+    mkaQuotes = file.read().split("#")
 
 # Fetch inspirational quotes using the ZenQuotes API. <https://zenquotes.io/>
 
@@ -74,14 +79,11 @@ def getQuote():
     return (quote)
 
 
-# Fetch over 180 Mustafa Kemal Atatürk quotes using the Atatürk Sözleri API. <https://github.com/orhanemree/ataturk-sozleri-api>
+# Return a random response from the collected quotes of Mustafa Kemal Atatürk.
 
 
 def getMkaQuote():
-    response = requests.get("https://ataturk-sozleri-api.herokuapp.com/")
-    jsonData = json.loads(response.text)
-    mkaQuote = jsonData["quote"]
-    return mkaQuote
+    return random.choice(mkaQuotes)
 
 
 # Manually store Turkish "Fight Club" quotes in the following list.
@@ -122,7 +124,7 @@ fightClubQuotes = [
     "Marla! Beni garip bir dönemimde tanıdın."
 ]
 
-# Retrieve and send a random Mustafa Kemal Atatürk quote from the Atatürk Sözleri API. (SlashCommand) (Temporarily Inactive)
+# Send a Mustafa Kemal Atatürk quote.
 
 
 @tree.command(name="mka",
