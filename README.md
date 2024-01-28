@@ -44,7 +44,7 @@ However, as long as we are anonymous here and trust each other, **we share our t
 
 **Well, have you ever seen a Discord bot that cares about your feelings and is eager to cheer you up?**
 
-EgoistBot - contrary to its name - aims exactly that! **It detects your depressed mood** and sends you **uplifting EgeFitness quotes**. It also sends you many **exciting Fight Club quotes**, **thousands of inspirational quotes from important people in history**, and most importantly, **over 180 eye-opening Mustafa Kemal ATATÜRK quotes!**
+EgoistBot - contrary to its name - aims exactly that! **It detects your depressed mood** and sends you **uplifting EgeFitness quotes**. It also sends you many **exciting Fight Club quotes**, **thousands of inspirational quotes from important people in history**, and most importantly, **160 eye-opening Mustafa Kemal ATATÜRK quotes!**
 
 ## Built With
 
