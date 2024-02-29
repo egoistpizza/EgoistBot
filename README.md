@@ -36,8 +36,6 @@
 
 ## About The Project
 
-![Screen Shot](https://cdn.discordapp.com/attachments/982678664758054944/991477243236847626/discord_banner.jpeg)
-
 Discord is a great messaging application that has settled in our lives over time. We laugh, have fun and make friends on this platform. There are already countless Discord bots that offer us services such as moderation and mini-games.
 
 However, as long as we are anonymous here and trust each other, **we share our troubles, problems and deepest feelings** on this platform.
@@ -69,12 +67,6 @@ EgoistBot is a project still in development. To participate in the **closed BETA
 ## Usage
 
 EgoistBot **detects the depressive meaning** in your message and **sends actionable EgeFitness quotes to help you!**
-
-Here are a few examples:
-
-![Screen Shot](https://cdn.discordapp.com/attachments/982678664758054944/991469568071585894/unknown.png)
-![Screen Shot](https://cdn.discordapp.com/attachments/982678664758054944/991469733872418856/unknown.png)
-![Screen Shot](https://cdn.discordapp.com/attachments/982678664758054944/991469836255375390/unknown.png)
 
 Here are the most basic EgoistBot commands and functions:
 
