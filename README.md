@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/egoistpizza/EgoistBot">
-    <img src="https://cdn.discordapp.com/attachments/982678664758054944/991476569614860428/profilephoto.png" alt="Logo" width="80" height="80">
+    <img src="https://avatars.githubusercontent.com/u/76704912?s=400&u=3b975c3a5ed38bbe5f03115c3035bab48313ff0d&v=4" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">EgoistBot</h3>
