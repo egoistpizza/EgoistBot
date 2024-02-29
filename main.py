@@ -24,6 +24,35 @@ import random
 from bs4 import BeautifulSoup
 from keep_alive import keep_alive
 
+# The 'getAtaturkQuote()' function has been completely revamped! Now it powers up from the AtaturkQuotesAPI. For detailed information, see: https://github.com/egoistpizza/AtaturkQuotesAPI
+
+def getAtaturkQuote():
+  try:
+    
+      # Send a GET request to the AtatürkQuotesAPI
+      response = requests.get("http://3.147.64.168/tr")
+
+      # Check if the request was successful (status code 200)
+      if response.status_code == 200:
+        
+          # Parse the JSON response
+          json_data = response.json()
+
+          # Check if the "quote" key exists in the JSON data
+          if 'quote' in json_data:
+            
+              # Return the Atatürk quote as a string
+              return json_data['quote']
+            
+          else:
+              return "Error: 'quote' key not found in JSON response"
+
+      else:
+          return f"Error: Unable to fetch Atatürk quote. Status Code: {response.status_code}"
+
+  except Exception as e:
+      return f"Error: {str(e)}"
+
 # Define a list of greeting words to detect greetings in the message content and a list of corresponding responses for those greetings.
 
 salute = ["selam", "Selam", "slm", "Selam", "merhaba", "Merhaba"]
@@ -47,14 +76,12 @@ tree = app_commands.CommandTree(client)
 
 # Define a command called "getping" that responds with the current latency.
 
-
 @tree.command(name="getping",
               description="Pong!",
               guild=discord.Object(os.environ['TEST_GUILD_ID']))
 async def getping(interaction):
     await interaction.response.send_message(
         f"Pong! In {round(client.latency * 1000)}ms")
-
 
 # Scrape Ege Fitness quotes from a website. <Source: https://gymsozluk.com/blog/ege-fitness-sozleri/>
 
@@ -64,27 +91,13 @@ html = requests.get(url).content
 soup = BeautifulSoup(html, "html.parser")
 egeFitnessQuotes = soup.find().find_all("p")
 
-# Retrieve quotes from Mustafa Kemal Atatürk from extra files. <Source: https://tr.wikiquote.org/wiki/Mustafa_Kemal_Atat%C3%BCrk>
-
-with open("extra/mkaQuotes.txt") as file:
-    mkaQuotes = file.read().split("#")
-
 # Fetch inspirational quotes using the ZenQuotes API. <https://zenquotes.io/>
-
 
 def getQuote():
     response = requests.get("https://zenquotes.io/api/random")
     jsonData = json.loads(response.text)
     quote = jsonData[0]["q"] + " -" + jsonData[0]["a"]
     return (quote)
-
-
-# Return a random response from the collected quotes of Mustafa Kemal Atatürk.
-
-
-def getMkaQuote():
-    return random.choice(mkaQuotes)
-
 
 # Manually store Turkish "Fight Club" quotes in the following list.
 
@@ -126,17 +139,13 @@ fightClubQuotes = [
 
 # Send a Mustafa Kemal Atatürk quote.
 
-
 @tree.command(name="mka",
               description="Mustafa Kemal Atatürk alıntısı",
               guild=discord.Object(os.environ['TEST_GUILD_ID']))
 async def mka(interaction):
-    quote = getMkaQuote()
-    await interaction.response.send_message(quote)
-
+    await interaction.response.send_message(getAtaturkQuote())
 
 # Retrieve and send a quote from Ege Fitness obtained through web scraping.
-
 
 @tree.command(name="egefitness",
               description="Ege Fitness alıntısı",
@@ -146,9 +155,7 @@ async def egefitness(interaction):
         (str(random.choice(egeFitnessQuotes)).replace("<p>", "").replace(
             "</p>", "").replace("<br/>", "")))
 
-
 # Retrieve and send random inspirational quotes from ZenQuotes. (SlashCommand)
-
 
 @tree.command(name="inspiration",
               description="A random inspirational quote",
@@ -157,9 +164,7 @@ async def inspiration(interaction):
     quote = getQuote()
     await interaction.response.send_message(quote)
 
-
 # Send one of the stored Fight Club quotes when requested. (SlashCommand)
-
 
 @tree.command(name="tylerdurden",
               description="Tyler Durden (Fight Club) alıntısı",
@@ -167,18 +172,14 @@ async def inspiration(interaction):
 async def tylerdurden(interaction):
     await interaction.response.send_message(random.choice(fightClubQuotes))
 
-
 # Notify when the bot is successfully logged into Discord.
-
 
 @client.event
 async def on_ready():
     await tree.sync(guild=discord.Object(os.environ['TEST_GUILD_ID']))
     print("Ready!")
 
-
 # Detect in-line commands and respond accordingly.
-
 
 @client.event
 async def on_message(message):
@@ -239,7 +240,6 @@ async def on_message(message):
         await message.channel.send(
             str(random.choice(egeFitnessQuotes)).replace("<p>", "").replace(
                 "</p>", "").replace("<br/>", ""))
-
 
 # Keep the bot online 24/7 by receiving 1 HTTP request every 5 minutes.
 
