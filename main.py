@@ -26,11 +26,11 @@ from keep_alive import keep_alive
 
 # The 'getAtaturkQuote()' function has been completely revamped! Now it powers up from the AtaturkQuotesAPI. For detailed information, see: https://github.com/egoistpizza/AtaturkQuotesAPI
 
-def getAtaturkQuote():
+def getAtaturkQuote(lang = "tr"):
   try:
     
       # Send a GET request to the AtatürkQuotesAPI
-      response = requests.get("http://3.147.64.168/tr")
+      response = requests.get(f"http://3.147.64.168/{lang}")
 
       # Check if the request was successful (status code 200)
       if response.status_code == 200:
@@ -137,13 +137,73 @@ fightClubQuotes = [
     "Marla! Beni garip bir dönemimde tanıdın."
 ]
 
-# Send a Mustafa Kemal Atatürk quote.
+# Send a Mustafa Kemal Atatürk quote. * New languages added. *
 
-@tree.command(name="mka",
-              description="Mustafa Kemal Atatürk alıntısı",
+@tree.command(name="mka-tr",
+              description="Türkçe - Mustafa Kemal Atatürk alıntısı.",
               guild=discord.Object(os.environ['TEST_GUILD_ID']))
 async def mka(interaction):
     await interaction.response.send_message(getAtaturkQuote())
+
+@tree.command(name="mka-en",
+              description="English - Mustafa Kemal Atatürk quote.",
+              guild=discord.Object(os.environ['TEST_GUILD_ID']))
+async def mka(interaction):
+    await interaction.response.send_message(getAtaturkQuote("en"))
+
+@tree.command(name="mka-zh",
+              description="中文 - 穆斯塔法-凯末尔-阿塔图尔克名言。",
+              guild=discord.Object(os.environ['TEST_GUILD_ID']))
+async def mka(interaction):
+    await interaction.response.send_message(getAtaturkQuote("zh"))
+
+@tree.command(name="mka-fr",
+              description="Français - Citation de Mustafa Kemal Atatürk.",
+              guild=discord.Object(os.environ['TEST_GUILD_ID']))
+async def mka(interaction):
+    await interaction.response.send_message(getAtaturkQuote("fr"))
+
+@tree.command(name="mka-de",
+              description="Deutsch - Mustafa Kemal Atatürk Zitat.",
+              guild=discord.Object(os.environ['TEST_GUILD_ID']))
+async def mka(interaction):
+    await interaction.response.send_message(getAtaturkQuote("de"))
+
+@tree.command(name="mka-it",
+              description="Italiano - Citazione di Mustafa Kemal Atatürk.",
+              guild=discord.Object(os.environ['TEST_GUILD_ID']))
+async def mka(interaction):
+    await interaction.response.send_message(getAtaturkQuote("it"))
+
+@tree.command(name="mka-ja",
+              description="日本語 - ムスタファ・ケマル・アタチュルクの言葉。",
+              guild=discord.Object(os.environ['TEST_GUILD_ID']))
+async def mka(interaction):
+    await interaction.response.send_message(getAtaturkQuote("ja"))
+
+@tree.command(name="mka-ko",
+              description="한국어 - 무스타파 케말 아타튀르크 인용문.",
+              guild=discord.Object(os.environ['TEST_GUILD_ID']))
+async def mka(interaction):
+    await interaction.response.send_message(getAtaturkQuote("ko"))
+
+@tree.command(name="mka-pl",
+              description="Polski - cytat Mustafy Kemala Atatürka.",
+              guild=discord.Object(os.environ['TEST_GUILD_ID']))
+async def mka(interaction):
+    await interaction.response.send_message(getAtaturkQuote("pl"))
+
+@tree.command(name="mka-ru",
+              description="На русском языке - цитата Мустафы Кемаля Ататюрка.",
+              guild=discord.Object(os.environ['TEST_GUILD_ID']))
+async def mka(interaction):
+    await interaction.response.send_message(getAtaturkQuote("ru"))
+
+@tree.command(name="mka-es",
+              description="Español - Cita de Mustafa Kemal Atatürk.",
+              guild=discord.Object(os.environ['TEST_GUILD_ID']))
+async def mka(interaction):
+    await interaction.response.send_message(getAtaturkQuote("es"))
 
 # Retrieve and send a quote from Ege Fitness obtained through web scraping.
 
